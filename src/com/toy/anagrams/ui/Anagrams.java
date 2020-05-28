@@ -86,7 +86,7 @@ public class Anagrams extends JFrame {
 
         initComponents();
         getRootPane().setDefaultButton(guessButton);
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx,(String)selectLevel.getSelectedItem()));
         pack();
         guessedWord.requestFocusInWindow();
         // Center in the screen
@@ -260,7 +260,8 @@ public class Anagrams extends JFrame {
         wordIdx = (wordIdx + 1) % wordLibrary.getSize();
 
         feedbackLabel.setText(" ");
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        String s=(String)selectLevel.getSelectedItem();
+        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx,(String)selectLevel.getSelectedItem()));
         guessedWord.setText("");
         getRootPane().setDefaultButton(guessButton);
 
