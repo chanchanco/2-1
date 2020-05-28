@@ -137,7 +137,22 @@ final class StaticWordLibrary extends WordLibrary {
         "nuisngde",
         "rtdatioialn"
     };*/
-    public String MixWord(String s) {
+    public String mixWord1(String s){
+        int n=s.length();
+        String s1=s.substring(0,n/2);
+        String s2=s.substring(n/2,n);
+        return s2+s1;
+    }
+    
+    public String mixWord2(String s){
+        int n=s.length();
+        String s1=s.substring(0,n/3);
+        String s2=s.substring(n/3,(n*2)/3);
+        String s3=s.substring((n*2)/3,n);
+        return s2+s1+s3;
+    }
+    
+    public String MixWord3(String s) {
     	 int n=s.length();
     	 String[] stA = new String[s.length()];
     	 for(int i=0; i<n; i++){
@@ -147,7 +162,7 @@ final class StaticWordLibrary extends WordLibrary {
     	 List<String> shu = new ArrayList<>(list);
     	 Collections.shuffle(shu);
     	 String str = String.join("", shu);
-    	 System.out.println(str);
+    	 //System.out.println(str);
     	 return str;
     }
 
@@ -174,10 +189,14 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public String getScrambledWord(int idx) {
-    	return MixWord(getWord(idx));
-    	//getWordに番号を送って正解の単語をもらい、それをMixWordに送っている。
-        //return SCRAMBLED_WORD_LIST[idx];
+    public String getScrambledWord(int idx,String level) {
+        if(level=="Level 1"){
+         return mixWord1(getWord(idx));
+        }else if(level=="Level 2"){
+         return mixWord2(getWord(idx));
+        }else{
+          return MixWord3(getWord(idx));
+        }
     }
 
     /**
