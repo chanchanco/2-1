@@ -31,6 +31,9 @@
 
 package com.toy.anagrams.lib;
 
+import java.util.*;
+import java.util.Random;
+
 /**
  * Implementation of the logic for the Anagram Game application.
  */
@@ -85,7 +88,7 @@ final class StaticWordLibrary extends WordLibrary {
         "unsigned",
         "traditional"};
 
-    private static final String[] SCRAMBLED_WORD_LIST = {
+    /*private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
         "maibuguos",
         "ratimhteci",
@@ -133,9 +136,23 @@ final class StaticWordLibrary extends WordLibrary {
         "evtrxe",
         "nuisngde",
         "rtdatioialn"
-    };
+    };*/
+    public String MixWord(String s) {
+    	 int n=s.length();
+    	 String[] stA = new String[s.length()];
+    	 for(int i=0; i<n; i++){
+    		 stA[i] = String.valueOf(s.charAt(i));
+    	 }
+    	 List<String> list = Arrays.asList(stA);
+    	 List<String> shu = new ArrayList<>(list);
+    	 Collections.shuffle(shu);
+    	 String str = String.join("", shu);
+    	 System.out.println(str);
+    	 return str;
+    }
 
     final static WordLibrary DEFAULT = new StaticWordLibrary();
+    //正解の単語が入ってる配列が変更されないようにしている？
 
     /**
      * Singleton class.
@@ -158,7 +175,9 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+    	return MixWord(getWord(idx));
+    	//getWordに番号を送って正解の単語をもらい、それをMixWordに送っている。
+        //return SCRAMBLED_WORD_LIST[idx];
     }
 
     /**
