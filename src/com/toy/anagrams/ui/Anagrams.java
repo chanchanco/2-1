@@ -119,6 +119,7 @@ public class Anagrams extends JFrame {
         mainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
+        ruleMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
 
         //setTitle("AnagramsAnagrams");
@@ -227,7 +228,7 @@ public class Anagrams extends JFrame {
         fileMenu.setMnemonic('F');
         fileMenu.setText("File");
 
-        aboutMenuItem.setMnemonic('A');
+        aboutMenuItem.setMnemonic('A');//キーボードでAを押せばこのページが開く
         aboutMenuItem.setText("About");
         aboutMenuItem.setToolTipText("About");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -236,6 +237,16 @@ public class Anagrams extends JFrame {
             }
         });
         fileMenu.add(aboutMenuItem);
+        
+        ruleMenuItem.setMnemonic('R');//キーボードでAを押せばこのページが開く
+        ruleMenuItem.setText("Rule");
+        ruleMenuItem.setToolTipText("Rule");
+        ruleMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ruleMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(ruleMenuItem);
 
         exitMenuItem.setMnemonic('E');
         exitMenuItem.setText("Exit");
@@ -254,6 +265,10 @@ public class Anagrams extends JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new About(this).setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+    
+    private void ruleMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        new Rule(this).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
@@ -290,6 +305,7 @@ public class Anagrams extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem ruleMenuItem;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel feedbackLabel;
