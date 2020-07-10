@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, Oracle.
+, * Copyright (c) 2010, Oracle.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -188,6 +188,56 @@ final class StaticWordLibrary extends WordLibrary {
         "nuisngde",
         "rtdatioialn"
     };*/
+    
+    private static final String[] HINT_LIST4 = {
+            "a",
+            "a",
+            "a",
+            "b",
+            "b",
+            "c",
+            "c",
+            "c",
+            "c",
+            "d",
+            "d",
+            "d",
+            "d",
+            "e",
+            "e",
+            "e",
+            "f",
+            "f",
+            "h",
+            "i",
+            "i",
+            "i",
+            "i",
+            "j",
+            "l",
+            //"microprocessor",
+            "m",//changeWord
+            "m",//addWord
+            "n",
+            "o",
+            "p",
+            "p",
+            "p",
+            "p",
+            "r",
+            "s",
+            "s",
+            "s",
+            "l",
+            "l",
+            "m",
+            "m",
+            "m",
+            "h",
+            "v",
+            "u",
+            "t"};
+    
     public String mixWord1(String s){
         int n=s.length();
         String s1=s.substring(0,n/2);
@@ -249,9 +299,12 @@ final class StaticWordLibrary extends WordLibrary {
           return MixWord3(getWord(idx));
         }
     }
-    public String getHint(int idx) {
-		return HINT_LIST[idx];
-
+    public String getHint(int idx, String level) {
+    	if(level=="Level 4") {
+    		return "start with: "+HINT_LIST4[idx];
+    	}
+    	else return HINT_LIST[idx];
+		
     }
     /**
      * Gets the number of words in the library.
