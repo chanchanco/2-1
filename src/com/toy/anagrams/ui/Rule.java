@@ -80,7 +80,7 @@ public class Rule extends JDialog {
         copyrightTextArea.setEditable(false);
         copyrightTextArea.setLineWrap(true);
         copyrightTextArea.setRows(8);
-        copyrightTextArea.setText("文字を並び替えて、単語を作ろう！\n\nLEVEL1~3まであるよ！  \n\n君は全部クリアできるかな！？");
+        copyrightTextArea.setText("文字を並び替えて、単語を作ろう！\n\nLEVEL1~4まであるよ！  \n\n君は全部クリアできるかな！？");
         copyrightTextArea.setWrapStyleWord(true);
         copyrightTextArea.setBorder(null);
         copyrightTextArea.setFocusable(false);
