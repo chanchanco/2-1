@@ -111,8 +111,10 @@ public class Anagrams extends JFrame {
         guessLabel = new javax.swing.JLabel();
         guessedWord = new javax.swing.JTextField();
         feedbackLabel = new javax.swing.JLabel();
+        hintbackLabel = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
         guessButton = new javax.swing.JButton();
+        hintButton = new javax.swing.JButton();
         nextTrial = new javax.swing.JButton();
         levelLabel = new javax.swing.JLabel();
         selectLevel = new javax.swing.JComboBox();
@@ -169,7 +171,7 @@ public class Anagrams extends JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(guessedWord, gridBagConstraints);
 
-        feedbackLabel.setText("aaaaaaaaaaaaaa");
+        feedbackLabel.setText("   ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -179,6 +181,37 @@ public class Anagrams extends JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(feedbackLabel, gridBagConstraints);
+
+        hintButton.setMnemonic('H');
+        hintButton.setText("Hint");
+        hintButton.setToolTipText("Hint of the scrambled word.");
+        hintButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hintActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.gridheight = 3;
+        //gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 1.0;
+        //mainPanel.add(buttonsPanel, gridBagConstraints);
+        //buttonsPanel.add(hintButton, gridBagConstraints);
+        mainPanel.add(hintButton, gridBagConstraints);
+
+        hintbackLabel.setText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        //gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        //gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        mainPanel.add(hintbackLabel, gridBagConstraints);
 
         buttonsPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -204,6 +237,7 @@ public class Anagrams extends JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -237,7 +271,7 @@ public class Anagrams extends JFrame {
             }
         });
         fileMenu.add(aboutMenuItem);
-        
+
         ruleMenuItem.setMnemonic('R');//キーボードでAを押せばこのページが開く
         ruleMenuItem.setText("Rule");
         ruleMenuItem.setToolTipText("Rule");
@@ -266,7 +300,7 @@ public class Anagrams extends JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new About(this).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
-    
+
     private void ruleMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new Rule(this).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
@@ -275,6 +309,7 @@ public class Anagrams extends JFrame {
         wordIdx = (wordIdx + 1) % wordLibrary.getSize();
 
         feedbackLabel.setText(" ");
+        hintbackLabel.setText(" ");
         String s=(String)selectLevel.getSelectedItem();
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx,(String)selectLevel.getSelectedItem()));
         guessedWord.setText("");
@@ -298,6 +333,18 @@ public class Anagrams extends JFrame {
 
         guessedWord.requestFocusInWindow();
     }//GEN-LAST:event_guessedWordActionPerformed
+    private void hintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guessedWordActionPerformed
+        /*if (wordLibrary.isCorrect(wordIdx, guessedWord.getText())){
+            hintbackLabel.setText("Correct! Try a new word!");
+            getRootPane().setDefaultButton(nextTrial);
+        } else {
+            hintbackLabel.setText("Incorrect! Try again!");
+            guessedWord.setText("");
+        }*/
+    	hintbackLabel.setText(wordLibrary.getHint(wordIdx));
+
+        guessedWord.requestFocusInWindow();
+    }//GEN-LAST:event_guessedWordActionPerformed
 
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
@@ -309,8 +356,10 @@ public class Anagrams extends JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel feedbackLabel;
+    private javax.swing.JLabel hintbackLabel;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton guessButton;
+    private javax.swing.JButton hintButton;
     private javax.swing.JLabel guessLabel;
     private javax.swing.JTextField guessedWord;
     private javax.swing.JLabel levelLabel;

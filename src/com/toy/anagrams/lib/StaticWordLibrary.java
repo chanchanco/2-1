@@ -31,8 +31,10 @@
 
 package com.toy.anagrams.lib;
 
-import java.util.*;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Implementation of the logic for the Anagram Game application.
@@ -87,6 +89,55 @@ final class StaticWordLibrary extends WordLibrary {
         "vertex",
         "unsigned",
         "traditional"};
+
+    private static final String[] HINT_LIST = {
+            "抽象化",
+            "あいまい",
+            "算術",
+            "バックスラッシュ",
+            "ビットマップ",
+            "状況",
+            "組み合わせ",
+            "結果的に",
+            "コンソーシアム",
+            "減少",
+            "依存",
+            "明確化",
+            "動的",
+            "カプセル化",
+            "同等",
+            "表現",
+            "促進する",
+            "断片",
+            "16進数",
+            "実装",
+            "区別できない",
+            "継承",
+            "インターネット",
+            "ジャバ",
+            "ローカリゼーション",
+            //"microprocessor",
+            "相互",//changeWord
+            "ミュータント",//addWord
+            "ナビゲーション",
+            "最適化",
+            "パラメータ",
+            "パトリック",
+            "ピクルス",
+            "多態性",
+            "厳密に",
+            "同時に",
+            "仕様",
+            "構造",
+            "語彙",
+            "同様に",
+            "管理",
+            "操作",
+            "数学",
+            "ホットジャバ",
+            "バーテックス",
+            "無署名",
+            "伝統的"};
 
     /*private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
@@ -143,7 +194,7 @@ final class StaticWordLibrary extends WordLibrary {
         String s2=s.substring(n/2,n);
         return s2+s1;
     }
-    
+
     public String mixWord2(String s){
         int n=s.length();
         String s1=s.substring(0,n/3);
@@ -151,7 +202,7 @@ final class StaticWordLibrary extends WordLibrary {
         String s3=s.substring((n*2)/3,n);
         return s2+s1+s3;
     }
-    
+
     public String MixWord3(String s) {
     	 int n=s.length();
     	 String[] stA = new String[s.length()];
@@ -198,7 +249,10 @@ final class StaticWordLibrary extends WordLibrary {
           return MixWord3(getWord(idx));
         }
     }
+    public String getHint(int idx) {
+		return HINT_LIST[idx];
 
+    }
     /**
      * Gets the number of words in the library.
      * @return the total number of plain/scrambled word pairs in the library
