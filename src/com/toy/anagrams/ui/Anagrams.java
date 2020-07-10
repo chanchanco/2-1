@@ -250,7 +250,7 @@ public class Anagrams extends JFrame {
         gridBagConstraints.gridy = 2;
         mainPanel.add(levelLabel, gridBagConstraints);
 
-        selectLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Level 1", "Level 2", "Level 3" }));
+        selectLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Level 1", "Level 2", "Level 3", "Level 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -310,7 +310,7 @@ public class Anagrams extends JFrame {
 
         feedbackLabel.setText(" ");
         hintbackLabel.setText(" ");
-        String s=(String)selectLevel.getSelectedItem();
+        //String s=(String)selectLevel.getSelectedItem();
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx,(String)selectLevel.getSelectedItem()));
         guessedWord.setText("");
         getRootPane().setDefaultButton(guessButton);
@@ -341,7 +341,7 @@ public class Anagrams extends JFrame {
             hintbackLabel.setText("Incorrect! Try again!");
             guessedWord.setText("");
         }*/
-    	hintbackLabel.setText(wordLibrary.getHint(wordIdx));
+    	hintbackLabel.setText(wordLibrary.getHint(wordIdx,(String)selectLevel.getSelectedItem()));
 
         guessedWord.requestFocusInWindow();
     }//GEN-LAST:event_guessedWordActionPerformed
